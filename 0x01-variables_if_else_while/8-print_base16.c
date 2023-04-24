@@ -10,8 +10,8 @@ int main(void)
 {
 	int i;
 	char c = 'a';
-	for (i = 0; i < 10; i++)
 
+	for (i = 0; i < 10; i++)
 	{
 		putchar(i + '0');
 	}
