@@ -7,7 +7,7 @@
  * integers from 0 to n inclusive, where
  * @n: is the input parameter to the function.
  * The function only prints the table if n is between 0 and 15 inclusive.
- * If n is outside of this range, the function returns without 
+ * If n is outside of this range, the function returns without
  * printing anything
  */
 
