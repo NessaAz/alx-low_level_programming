@@ -2,8 +2,10 @@
 #include <stdio.h>
 
 /**
+ * main - Entry point
  * This program calculates the sum of all the multiples of 3 or 5
  * below 1024 (excluded)
+ * Return: Always 0 (success)
  */
 
 int main(void)
