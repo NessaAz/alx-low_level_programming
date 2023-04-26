@@ -8,7 +8,7 @@
 
 int main(void)
 {
-	int fib1 = 1, fib2 = 2, fib3;
+	int fib1 = 1, fib2 = 2, fib3, i;
 
 	printf("%d, %d", fib1, fib2);
 
