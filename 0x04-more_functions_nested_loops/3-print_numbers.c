@@ -5,7 +5,7 @@
  * prints the numbers 0 to 9 followed by a new line using _putchar function
  *
  *  returns: void
- */ 
+ */
 
 void print_numbers(void)
 {
