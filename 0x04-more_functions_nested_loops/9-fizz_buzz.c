@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 /**
- * fizzbuzz - prints numbers from 1 to 100
+ * main - prints numbers from 1 to 100
  * and substitutes multiples of 3 with Fizz,
  * multiples of 5 with Buzz
  * and multiples of both with FizzBuzz.
