@@ -36,7 +36,7 @@ int main(void)
 		}
 	}
 
-	printf("\n");
+	printf("Buzz\n");
 
 	return (0);
 }
