@@ -2,7 +2,7 @@
 
 /*
  * Function: print_numbers
- * print_numbers - prints the numbers 0 to 9 followed by 
+ * print_numbers - prints numbers 0 to 9 followed by
  * a new line using _putchar function
  *
  *  returns: void
