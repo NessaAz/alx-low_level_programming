@@ -14,16 +14,16 @@ int main(void)
 
 	srand(time(NULL));
 
-	password[0] = rand() % 26 + 'A';  // Generate a random capital letter
-	password[1] = rand() % 26 + 'a';  // Generate a random lowercase letter
-	password[2] = rand() % 10 + '0';  // Generate a random digit
+	password[0] = rand() % 26 + 'A';  /* Generate a random capital letter */
+	password[1] = rand() % 26 + 'a';  /* Generate a random lowercase letter */
+	password[2] = rand() % 10 + '0';  /* Generate a random digit */ 
 
 	for (i = 3; i < 6; i++)
 	{
-		password[i] = rand() % 94 + 33;  // Generate a random printable ASCII character
+		password[i] = rand() % 94 + 33;/* Generate a random printable ASCII character*/
 	}
 
-	password[6] = '\0';  // Null-terminate the password string
+	password[6] = '\0';  /* Null-terminate the password string */
 
 	printf("%s\n", password);
 
