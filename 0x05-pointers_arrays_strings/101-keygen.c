@@ -27,5 +27,5 @@ int main(void)
 
 	printf("%s\n", password);
 
-	return 0;
+	return (0);
 }
