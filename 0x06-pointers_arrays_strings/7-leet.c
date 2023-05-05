@@ -9,8 +9,8 @@
 
 char *leet(char *str)
 {
-	int i, j;
-	char leet_map[256] = {0};
+	int i;
+	char leet_map[128] = {0};
 
 	/* Build the leet map */
 	leet_map['a'] = leet_map['A'] = '4';
@@ -22,12 +22,11 @@ char *leet(char *str)
 	/* Encode the string */
 	for (i = 0; str[i] != '\0'; i++)
 	{
-		if (leet_map[str[i]] != 0)
+		if (leet_map[str[i]])
 		{
 			/* Replace the character with its leet counterpart */
 			str[i] = leet_map[str[i]];
 		}
 	}
-
 	return (str);
 }
