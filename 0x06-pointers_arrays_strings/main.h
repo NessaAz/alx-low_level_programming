@@ -12,5 +12,7 @@ char *leet(char *str);
 char *rot13(char *str);
 void print_number(int n);
 int _putchar(int c);
+char *infinite_add(char *n1, char *n2, char *r, int size_r);
+
 
 #endif /*MAIN_H */
