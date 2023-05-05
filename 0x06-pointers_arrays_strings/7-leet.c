@@ -3,7 +3,7 @@
 
 /**
  * leet - encodes a string into 1337(leet).
- * @str: the string to encode.
+ * @s: the string to encode.
  * Return: a pointer to the encoded string.
  */
 
