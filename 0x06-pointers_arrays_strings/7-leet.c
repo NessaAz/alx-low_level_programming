@@ -4,10 +4,10 @@
 /**
  * leet - encodes a string into 1337(leet).
  * @str: the string to encode.
- * Return: a pointer to the resulting string.
+ * Return: a pointer to the encoded string.
  */
 
-char *leet(char *str)
+char *leet(char *s)
 {
 	int i;
 	char leet_map[128] = {0};
@@ -20,13 +20,14 @@ char *leet(char *str)
 	leet_map['l'] = leet_map['L'] = '1';
 
 	/* Encode the string */
-	for (i = 0; str[i] != '\0'; i++)
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		if (leet_map[str[i]])
+		if (leet_map[s[i]])
 		{
 			/* Replace the character with its leet counterpart */
-			str[i] = leet_map[str[i]];
+			s[i] = leet_map[s[i]];
 		}
 	}
-	return (str);
+
+	return (s);
 }
