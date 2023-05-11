@@ -29,7 +29,8 @@ int wildcmp(char *s1, char *s2)
 			return (1);
 	}
 
-	/* If s1 and s2 have the same first character or s2 contains '?',
+	/*
+	 * If s1 and s2 have the same first character or s2 contains '?',
 	 * we can consider them identical and try to match the rest of the strings
 	 */
 	if (*s1 == *s2 || *s2 == '?')
