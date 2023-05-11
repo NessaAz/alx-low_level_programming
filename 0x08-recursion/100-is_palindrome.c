@@ -36,3 +36,14 @@ int is_palindrome(char *s)
 	s[len - 1] = '\0';  /* replace last character with null */
 	return (is_palindrome(s + 1));
 }
+
+int main(void)
+{
+    char *s1 = "madam";
+    char *s2 = "palindrome";
+
+    printf("%d\n", is_palindrome(s1));  /* should print 1 */
+    printf("%d\n", is_palindrome(s2));  /* should print 0 */
+
+    return (0);
+}
