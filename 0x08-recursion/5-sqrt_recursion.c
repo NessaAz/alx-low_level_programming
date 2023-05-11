@@ -20,6 +20,10 @@ int _sqrt_recursion(int n)
 	return (_sqrt(n, 0));
 }
 
+/**
+ * _sqrt - helper fucntion to compute square root
+ */
+
 int _sqrt(int n, int i)
 {
 	/* Base case: if n is a perfect square, return the square root */
