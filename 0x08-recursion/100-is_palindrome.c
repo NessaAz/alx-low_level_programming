@@ -9,41 +9,30 @@
 
 int _strlen_recursion(char *s)
 {
-    if (*s == '\0')
-        return (0);
-    return (1 + _strlen_recursion(s + 1));
+	if (*s == '\0')
+		return (0);
+	return (1 + _strlen_recursion(s + 1));
 }
 
 /**
  * is_palindrome - Checks if a string,s is a palindrome.
  * @s: The string to check.
-  * Return: 1 if s is a palindrome, 0 otherwise.
+  * Return: 1 if s is a palindrome, 0 if not.
  */
 
 int is_palindrome(char *s)
 {
-	int len = _strlen_recursion(s);
+	int len = _strlen_recursion(s) -1;
 
 	/* base case: empty string or single-character string */
-	if (len <= 1)
+	if (len <= 0)
 		return (1);
 
 	/* compare first and last character */
-	if (s[0] != s[len - 1])
+	if (*s == *(s + len))
+	{
+		*(s + len) = '\0';
+		return (is_palindrome(s + 1));
+	}
 	return (0);
-
-	/* recursive case: check remaining substring */
-	s[len - 1] = '\0';  /* replace last character with null */
-	return (is_palindrome(s + 1));
-}
-
-int main(void)
-{
-    char *s1 = "madam";
-    char *s2 = "palindrome";
-
-    printf("%d\n", is_palindrome(s1));  /* should print 1 */
-    printf("%d\n", is_palindrome(s2));  /* should print 0 */
-
-    return (0);
 }
