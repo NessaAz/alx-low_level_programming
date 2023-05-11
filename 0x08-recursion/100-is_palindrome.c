@@ -10,7 +10,6 @@
 int is_palindrome(char *s)
 {
 	int len = _strlen_recursion(s);
-	int i;
 
 	/* base case: empty string or single-character string */
 	if (len <= 1)
