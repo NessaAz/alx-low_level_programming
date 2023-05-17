@@ -32,10 +32,9 @@ char **strtow(char *str)
 		words[word_count] = malloc((j - i + 1) * sizeof(char));
 		if (words[word_count] == NULL)
 		{
-			while (word_count > 0)
-				free(words[--word_count]);
-			free(words);
-			return (NULL);
+			if (word_count == 0)
+				free(words);
+				return (NULL);
 		}
 		k = 0;
 		while (i < j)
