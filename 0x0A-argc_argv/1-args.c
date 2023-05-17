@@ -5,7 +5,7 @@
  * main - prints the number of arguments passed to it
  * @argc: number of command-line arguments
  * @argv: array of pointers to strings containing the arguments
- * Return: 0 on success, non-zero on failure
+ * return: 0 on success, non-zero on failure
  */
 
 
