@@ -22,7 +22,7 @@ char *argstostr(int ac, char **av)
 	for (i = 0; i < ac; i++)
 	{
 		len = strlen(av[i]);
-		total_len += len + i;/* +1 for the the newline character */
+		total_len += len + 1;/* +1 for the the newline character */
 	}
 
 	str = malloc((total_len + 1) * sizeof(char));
@@ -30,7 +30,7 @@ char *argstostr(int ac, char **av)
 		return (NULL);
 
 	k = 0;
-	for (i =0; i < ac; i++)
+	for (i = 0; i < ac; i++)
 	{
 		len = strlen(av[i]);
 		for (j = 0; j < len; j++)
@@ -40,4 +40,4 @@ char *argstostr(int ac, char **av)
 	str[k] = '\0';
 
 	return (str);
-}	
+}
