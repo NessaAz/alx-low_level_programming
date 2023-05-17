@@ -5,6 +5,7 @@
 /**
  * strtow - splits a string into individual words
  * @str: the string to be split
+ * Return: 0 if success, NULL if failed
 */
 
 char **strtow(char *str)
