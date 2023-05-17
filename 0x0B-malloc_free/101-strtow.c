@@ -3,7 +3,7 @@
 #include <string.h>
 
 /**
- * strtow - splits a string into words
+ * strtow - splits a string into individual words
  * @str: the string to be split
 */
 
@@ -33,8 +33,10 @@ char **strtow(char *str)
 		if (words[word_count] == NULL)
 		{
 			if (word_count == 0)
+			{
 				free(words);
 				return (NULL);
+			}
 		}
 		k = 0;
 		while (i < j)
@@ -45,3 +47,4 @@ char **strtow(char *str)
 	words[word_count] = NULL;
 	return (words);
 }
+
