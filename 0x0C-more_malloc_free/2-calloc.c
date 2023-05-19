@@ -10,6 +10,8 @@
 
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
+	void *ptr;
+
 	/* Check if nmemb or size is 0 */
 	if (nmemb == 0 || size == 0)
 	{
@@ -17,7 +19,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	}
 
 	/* Allocate memory for the array */
-	void *ptr = malloc(nmemb * size);
+	ptr = malloc(nmemb * size);
 
 	/* Check if malloc failed */
 	if (ptr == NULL)
