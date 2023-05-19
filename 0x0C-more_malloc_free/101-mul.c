@@ -10,91 +10,43 @@
  * Return: pointer to array, 0 if failed
 */
 
-char *multiply_numbers(const char *num1, const char *num2)
+int multiplyNumbers(const char *num1, const char *num2)
 {
-	char *result;
-	int i, j, k, len1 = 0, len2 = 0, len_result;
+    int result = 0;
+    int i, j;
 
-	while (num1[len1])
-		len1++;
-	while (num2[len2])
-		len2++;
+    for (i = 0; num1[i] != '\0'; i++)
+    {
+        if (!isdigit(num1[i]))
+            return (-1);
 
-	len_result = len1 + len2;
-	result = malloc((len_result + 1) * sizeof(char));
-	if (result == NULL)
-		return (NULL);
+        for (j = 0; num2[j] != '\0'; j++)
+        {
+            if (!isdigit(num2[j]))
+                return (-1);
 
-	for (i = 0; i < len_result; i++)
-		result[i] = '0';
-	result[len_result] = '\0';
+            result += (num1[i] - '0') * (num2[j] - '0');
+            result *= 10;
+        }
+    }
 
-	for (i = len2 - 1; i >= 0; i--)
-	{
-		int carry = 0;
-		int n2 = num2[i] - '0';
-
-		for (j = len1 - 1, k = len_result - (len2 - i); j >= 0; j--, k--)
-		{
-			int n1 = num1[j] - '0';
-			int sum = (result[k] - '0') + (n1 * n2) + carry;
-
-			result[k] = (sum % 10) + '0';
-			carry = sum / 10;
-		}
-
-		result[k] += carry;
-	}
-
-	return (result);
+    result /= 10;
+    return (result);
 }
-
-/**
- * print_number - Prints a number string
- * @number: The number string to be printed
- */
-
-void print_number(const char *number)
-{
-	int i = 0;
-	while (number[i] == '0' && number[i + 1] != '\0')
-		i++;
-
-	while (number[i])
-	{
-		_putchar(number[i]);
-		i++;
-	}
-	_putchar('\n');
-}
-
-/**
- * main - Entry point
- * @argc: The number of command-line arguments
- * @argv: An array containing the command-line arguments
- * Return: 0 on success, 98 on error
- */
 
 int main(int argc, char *argv[])
 {
-	char *result;
+    if (argc != 3 || !_isNumber(argv[1]) || !_isNumber(argv[2]))
+    {
+        printf("Error\n");
+        return (98);
+    }
 
-	if (argc != 3 || _isNumber(argv[1]) || _isNumber(argv[2]))
-	{
-		for (int i = 0; i < 6; i++)
-			_putchar("Error\n"[i]);
-		return (98);
-	}
+    int num1 = atoi(argv[1]);
+    int num2 = atoi(argv[2]);
 
-	result = multiply_numbers(argv[1], argv[2]);
-	if (result == NULL)
-	{
-		free(result);
-		return (0);
-	}
+    int result = multiplyNumbers(argv[1], argv[2]);
+    printf("%d\n", result);
 
-	print_number(result);
-	free(result);
-
-	return (0);
+    return (0);
 }

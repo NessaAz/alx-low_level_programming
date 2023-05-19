@@ -7,13 +7,12 @@
  * Return: 1 if the string is not a number, 0 otherwise
  */
 
-int _isNumber(const char *str)
-{
+int _isNumber(const char *str) {
 	while (*str)
 	{
-		if (*str < '0' || *str > '9')
-			return (1);
+		if (!isdigit(*str))
+			return (0);
 		str++;
 	}
-	return (0);
+	return (1);
 }
