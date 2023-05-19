@@ -6,6 +6,7 @@
 /**
  * _atoi_digit - converts char to integer
  * @x: char to be converted
+ * Return: converted int
 */
 
 int _atoi_digit(char c)
@@ -65,19 +66,19 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 
 /**
  * mul_array - multiplies 2 arrays
- * @a1: 
- * @len1:
- * @a2:
- * @a3:
- * @lena: 
+ * @a1: array 1
+ * @len1: length of a1
+ * @a2: array 2
+ * @a3: resulting array
+ * @lena3: length of a3
  * Return: 
 */
 
-void *mul_array(const char *a1, int len1, char a2, char *a3, int lena)
+void *mul_array(const char *a1, int len1, char a2, char *a3, int lena3)
 {
 	int mul = 0, i, k;
 
-	k = lena - 1;
+	k = lena3 - 1;
 	for (i = len1 - 1; i >= 0; i--)
 	{
 		mul += (_atoi_digit(a1[i]) * _atoi_digit(a2)) + (_atoi_digit(a3[k]));
@@ -100,8 +101,8 @@ void *mul_array(const char *a1, int len1, char a2, char *a3, int lena)
 
 /**
  * print_array - prints array
- * @a: 
- * @nb: 
+ * @a: array
+ * @nb: number of elements
  * Return: 
 */
 
@@ -121,9 +122,9 @@ void print_array(const char *a, int nb)
 
 /**
  * main - entry point
- * @argc:
- * @argv:
- * Return: 
+ * @argc: length of array
+ * @argv: size of array
+ * Return: product of 2 numbers
 */
 
 int main(int argc, char *argv[])
