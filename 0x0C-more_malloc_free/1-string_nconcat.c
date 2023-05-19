@@ -16,8 +16,11 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
     char *result;
 
 	/* Ceck if either s1 or s2 is null */
-	if (s1 == NULL || s2 == NULL)
-		return (NULL);
+	if (s1 == NULL)
+		s1 = "";
+
+	if (s2 == NULL)
+		s2 = "";
 
 	/* Calculate the lengths of s2 and s1 */
 	len1 = strlen(s1);
