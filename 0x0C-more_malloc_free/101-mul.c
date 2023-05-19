@@ -4,13 +4,31 @@
 #include <ctype.h>
 
 /**
+ * _isNumber - Checks if a string is a number
+ * @str: The string to be checked
+ * Return: 1 if the string is not a number, 0 otherwise
+ */
+
+int _is_number(const char *str) 
+{
+	while (*str)
+	{
+		if (!isdigit(*str))
+			return (0);
+		str++;
+	}
+	return (1);
+}
+
+
+/**
  * multiply_numbers - function multiplies 2 positive numbers
  * @num1: first positive number
  * @num2: second positive number
  * Return: pointer to array, 0 if failed
 */
 
-int multiplyNumbers(const char *num1, const char *num2)
+int multiply_numbers(const char *num1, const char *num2)
 {
     int result = 0;
     int i, j;
@@ -32,27 +50,31 @@ int multiplyNumbers(const char *num1, const char *num2)
     return (result);
 }
 
-void printNumber(int number)
+void print_number(int number)
 {
     if (number == 0) {
         _putchar('0');
         return;
     }
 
-    int reversedNumber = 0;
+    int reversed_number = 0;
     while (number != 0) {
-        reversedNumber = reversedNumber * 10 + number % 10;
+        reversed_number = reversed_number * 10 + number % 10;
         number /= 10;
     }
 
-    while (reversedNumber != 0) {
-        _putchar(reversedNumber % 10 + '0');
-        reversedNumber /= 10;
+    while (reversed_number != 0) {
+        _putchar(reversed_number % 10 + '0');
+        reversed_number /= 10;
     }
 }
 
-int main(int argc, char *argv[]) {
-    if (argc != 3 || !_isNumber(argv[1]) || !_isNumber(argv[2])) {
+int main(int argc, char *argv[]) 
+{
+    int num1 = atoi(argv[1]);
+    int num2 = atoi(argv[2]);
+    
+    if (argc != 3 || !_is_number(argv[1]) || !_is_number(argv[2])) {
         _putchar('E');
         _putchar('r');
         _putchar('r');
@@ -65,8 +87,8 @@ int main(int argc, char *argv[]) {
     int num1 = atoi(argv[1]);
     int num2 = atoi(argv[2]);
 
-    int result = multiplyNumbers(argv[1], argv[2]);
-    printNumber(result);
+    int result = multiply_numbers(argv[1], argv[2]);
+    print_number(result);
     _putchar('\n');
 
     return (0);
