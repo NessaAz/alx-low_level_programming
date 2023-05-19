@@ -5,7 +5,7 @@
 
 /**
  * _atoi_digit - converts char to integer
- * @x: char to be converted
+ * @c: char to be converted
  * Return: converted int
 */
 
@@ -22,7 +22,7 @@ int _atoi_digit(char c)
 }
 
 /**
- * _isNumber - Checks if a string is a number
+ * _is_number - Checks if a string is a number
  * @str: The string to be checked
  * Return: 1 if the string is not a number, 0 otherwise
  */
@@ -68,10 +68,10 @@ void *_calloc(unsigned int nmemb, unsigned int size)
  * mul_array - multiplies 2 arrays
  * @a1: array 1
  * @len1: length of a1
- * @a2: array 2
+ * @a2: char
  * @a3: resulting array
  * @lena3: length of a3
- * Return: 
+ * Return: product of array,a3
 */
 
 void *mul_array(const char *a1, int len1, char a2, char *a3, int lena3)
@@ -103,7 +103,6 @@ void *mul_array(const char *a1, int len1, char a2, char *a3, int lena3)
  * print_array - prints array
  * @a: array
  * @nb: number of elements
- * Return: 
 */
 
 void print_array(const char *a, int nb)
