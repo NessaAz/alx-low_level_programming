@@ -10,16 +10,18 @@
 
 int *array_range(int min, int max)
 {
+    int n, *ptr, i;
+
 	if (min > max)
 	{
 		return (NULL);
 	}
 
 	/* Calculate the number of elements in the array */
-	int n = max - min + 1;
+	n = max - min + 1;
 
 	/* Allocate memory for the array */
-	int *ptr = malloc(n * sizeof(int));
+	ptr = malloc(n * sizeof(int));
 
 	/* Check if malloc failed */
 	if (ptr == NULL)
@@ -28,7 +30,7 @@ int *array_range(int min, int max)
 	}
 
 	/* Populate the array with the values from min to max */
-	for (int i = 0; i < n; i++)
+	for (i = 0; i < n; i++)
 	{
 		ptr[i] = min + i;
 	}
