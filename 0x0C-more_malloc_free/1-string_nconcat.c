@@ -12,13 +12,16 @@
 
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
+	unsigned int len1, len2;
+    char *result;
+
 	/* Ceck if either s1 or s2 is null */
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
 
 	/* Calculate the lengths of s2 and s1 */
-	unsigned int len1 = strlen(s1);
-	unsigned int len2 = strlen(s2);
+	len1 = strlen(s1);
+	len2 = strlen(s2);
 
 	/* if n>= length of s2, use the entire s2 */
 	if (n >= len2)
@@ -26,7 +29,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		n = len2;
 	}
 	/* Allocate memory for the concatenated string */
-	char *result = malloc((len1 + n + 1) * sizeof(char));
+	result = malloc((len1 + n + 1) * sizeof(char));
 	if (result == NULL)
 	{
 		return (NULL);
