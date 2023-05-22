@@ -12,8 +12,8 @@
 
 dog_t *new_dog(char *name, float age, char *owner)
 {
-    dog_t *new_dog;
-    char *name_copy, *owner_copy;
+	dog_t *new_dog;
+	char *name_copy, *owner_copy;
 
 	if (name == NULL || owner == NULL)
 		return (NULL);
@@ -34,7 +34,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 		return (NULL);
 	}
 	new_dog->name = name_copy;
-    new_dog->age = age;
-    new_dog->owner = owner_copy;
+	new_dog->age = age;
+	new_dog->owner = owner_copy;
 	return (new_dog);
 }
