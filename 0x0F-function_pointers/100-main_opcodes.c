@@ -2,27 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-/**
- * print_opcodes - Prints the opcodes of its own main function
- * @num_bytes: The number of opcodes to print
-*/
-
-void print_opcodes(int num_bytes)
-{
-    unsigned char *ptr;
-    int i;
-
-    ptr = (unsigned char *)print_opcodes;
-    for (i = 0; i < num_bytes; i++)
-    {
-        printf("%02x ", *ptr);
-        ptr++;
-    }
-    printf("\n");
-}
-
-
 /**
  * main - program's entry point
  * @argc: the number of command-line arguments
@@ -33,6 +12,8 @@ void print_opcodes(int num_bytes)
 int main(int argc, char *argv[])
 {
     int num_bytes;
+    unsigned char *ptr;
+    int i;
 
     if (argc != 2)
     {
@@ -48,7 +29,12 @@ int main(int argc, char *argv[])
     }
 
     printf("\n");
-    print_opcodes(num_bytes);
+
+    /* Print the opcodes of the main function */
+    ptr = (unsigned char *)main;
+    for (i = 0; i < num_bytes; i++)
+        printf("%02x ", *(ptr + i));
+    printf("\n");
 
     return (0);
 }
