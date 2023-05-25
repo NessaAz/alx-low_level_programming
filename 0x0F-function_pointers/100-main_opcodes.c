@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 		return (2);
 	}
 
-    unsigned char *main_ptr = (unsigned char *)main;
+	unsigned char *main_ptr = (unsigned char *)main;
 	/* Print the opcodes of the main function */
 	for (i = 0; i < num_bytes; i++)
 	{
