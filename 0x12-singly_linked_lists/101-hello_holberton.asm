@@ -1,19 +1,19 @@
 section .data
-    message db 'Hello, Holberton\n', 0
-    format db '%s', 0
+	message db "Hello, Holberton", 0
+	format db "%s", 0
 
 section .text
-    extern printf
+	extern printf
 
 global main
 main:
-    sub rsp, 8     ; Align stack to 16-byte boundary
+	sub rsp, 8
 
-    mov rdi, format
-    mov rsi, message
-    xor eax, eax   ; Clear EAX register
-    call printf
+	mov rdi, format
+	mov rsi, message
+	xor eax, eax
+	call printf
 
-    add rsp, 8     ; Restore stack alignment
-    xor eax, eax   ; Return 0
-    ret
+	add rsp, 8
+	xor eax, eax
+	ret
