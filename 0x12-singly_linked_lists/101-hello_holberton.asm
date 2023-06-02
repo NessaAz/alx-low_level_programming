@@ -1,8 +1,8 @@
-SECTION .data
+section .data
     message db 'Hello, Holberton', 0
     format db '%s', 0
 
-SECTION .text
+section .text
     extern printf
 
 global main
