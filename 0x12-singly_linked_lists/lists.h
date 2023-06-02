@@ -13,7 +13,7 @@
 typedef struct node
 {
 	char *str;
-    int len;
+	int len;
 	struct node *next;
 } list_t;
 
