@@ -3,7 +3,7 @@
 /**
  * print_list - prints the value of each node's str
  * @h: pointer to the head of list_h
- * Return - count ie, number of nodes traversed
+ * Return: count ie, number of nodes traversed
 */
 
 size_t print_list(const list_t *h)
