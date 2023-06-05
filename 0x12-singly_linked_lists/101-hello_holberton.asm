@@ -1,6 +1,6 @@
 section .data
-	message db "Hello, Holberton\n", 0
-	format db "%s", 0
+	message db "Hello, Holberton", 0
+	format db "\n%s", 0
 
 section .text
 	extern printf
