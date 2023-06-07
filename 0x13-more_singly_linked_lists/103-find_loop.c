@@ -19,7 +19,8 @@ listint_t *find_listint_loop(listint_t *head)
 		/* If the hare and tortoise meet, there is a loop */
 		if (tort == hare)
 		{
-			/* Move the tortoise back to the head and advance both pointers at the same speed */
+			/* Move the tortoise back to the head
+			and advance both pointers at the same speed */
 			tort = head;
 			while (tort != hare)
 			{
