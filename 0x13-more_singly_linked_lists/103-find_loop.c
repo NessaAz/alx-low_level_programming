@@ -7,9 +7,13 @@
  */
 listint_t *find_listint_loop(listint_t *head)
 {
-	listint_t *tort = head;
-	listint_t *hare = head;
+	listint_t *tort, *hare;
 
+	if (head == NULL)
+		return (NULL);
+
+	tort = head;
+	hare = head;
 	/* Move the hare two steps at a time and the tortoise one step at a time */
 	while (hare && hare->next)
 	{
