@@ -34,6 +34,12 @@ size_t print_listint_safe(const listint_t *head)
 		printf("[%p] %d\n", (void *)head, head->n);
 		count++;
 		head = head->next;
+
+		if (head == hare)/* in case a node indicates presence of a loop*/
+		{
+			printf("-> [%p] %d\n", (void *)head, head->n);
+			break;
+		}
 	}
 
 	return (count);
