@@ -11,7 +11,7 @@
 char **strtow(char *str)
 {
 	if (str == NULL || *str == '\0')
-		return NULL;
+		return (NULL);
 
 	int len, word_count, i, j, word_index, word_start, word_len;
 	char **all_words;
@@ -28,6 +28,10 @@ char **strtow(char *str)
 	all_words = malloc((word_count + 1) * sizeof(char *));
 	if (all_words == NULL)
 		return (NULL);
+
+	word_index = 0;
+    word_start = 0;
+    word_len = 0;
 
 	for (i = 0; i <= len; i++)
 	{
