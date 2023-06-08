@@ -13,11 +13,11 @@ char **strtow(char *str)
 	if (str == NULL || *str == '\0')
 		return NULL;
 
-	int len = strlen(str);
-	int word_count = 0;
-	int i, j;
-	int word_index = 0, word_start = 0, word_len = 0;
-	char **all_words = malloc((word_count + 1) * sizeof(char *));
+	int len, word_count, i, j, word_index, word_start, word_len;
+	char **all_words;
+
+	len = strlen(str);
+	word_count = 0;
 
 	/*Count the number of words in the string*/
 	for (i = 0; i < len; i++)
@@ -25,7 +25,7 @@ char **strtow(char *str)
 		if (str[i] != ' ' && (i == 0 || str[i - 1] == ' '))
 			word_count++;
 	}
-
+	all_words = malloc((word_count + 1) * sizeof(char *));
 	if (all_words == NULL)
 		return (NULL);
 
