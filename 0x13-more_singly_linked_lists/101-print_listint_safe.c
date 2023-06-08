@@ -8,6 +8,8 @@
 size_t print_listint_safe(const listint_t *head)
 {
 	const listint_t *tort, *hare;
+	size_t count = 0;
+
 
 	if (head == NULL)
 		return (0);
@@ -26,8 +28,6 @@ size_t print_listint_safe(const listint_t *head)
 			exit(98);
 		}
 	}
-
-	size_t count = 0;
 
 	while (head != NULL)
 	{
