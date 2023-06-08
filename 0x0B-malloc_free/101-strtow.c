@@ -13,7 +13,10 @@ char **strtow(char *str)
 	if (str == NULL || *str == '\0')
 		return (NULL);
 
-	int len, word_count, i, j, word_index, word_start, word_len;
+	int len;
+	int word_count;
+	int i, j;
+	int word_index, word_start, word_len;
 	char **all_words;
 
 	len = strlen(str);
