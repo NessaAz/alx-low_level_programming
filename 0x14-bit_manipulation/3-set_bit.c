@@ -13,7 +13,8 @@ int set_bit(unsigned long int *n, unsigned int index)
 		/* Error: Invalid index or null pointer*/
 		return (-1);
 
-	unsigned long int bitwise_mask = 1UL << index;
+	unsigned long int bitwise_mask;
+	bitwise_mask = 1UL << index;
 	*n = *n | bitwise_mask;
     
 	return (1);  /* Bit set to 1 */
