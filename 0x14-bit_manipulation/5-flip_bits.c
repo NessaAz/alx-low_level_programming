@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "main.h"
 
 /**
  * flip_bits - counts number of bits needed to be flipped to get from n to m
