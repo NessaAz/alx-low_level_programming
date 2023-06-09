@@ -9,12 +9,13 @@
 
 int clear_bit(unsigned long int *n, unsigned int index)
 {
-    if (index >= sizeof(unsigned long int) * 8 || n == NULL)
-   		/* Error: Invalid index or null pointer*/
-        return (-1);
-    
-    unsigned long int bitwise_mask = 1UL << index;
-    *n = *n & (~bitwise_mask);
-    
-    return (1);/* Bit set to 0 */
+	if (index >= sizeof(unsigned long int) * 8 || n == NULL)
+		/* Error: Invalid index or null pointer*/
+		return (-1);
+
+	unsigned long int bitwise_mask;
+	bitwise_mask = 1UL << index;
+	*n = *n & (~bitwise_mask);
+
+	return (1);/* Bit set to 0 */
 }
