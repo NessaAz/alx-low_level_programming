@@ -5,7 +5,8 @@
  * n: The number to be printed in binary representation
  */
 
-void print_binary(unsigned long int n) {
+void print_binary(unsigned long int n)
+{
     unsigned long int bitwise_mask = 1UL << (sizeof(unsigned long int) * 8 - 1);
     int first_zeros = 1;
     
