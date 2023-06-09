@@ -9,13 +9,13 @@
 
 int get_bit(unsigned long int n, unsigned int index)
 {
-    unsigned long int bitwise_mask = 1UL << index;
+	unsigned long int bitwise_mask = 1UL << index;
 
-    if (index >= sizeof(unsigned long int) * 8)
-        return (-1);  /*Error: Invalid index*/
+	if (index >= sizeof(unsigned long int) * 8)
+		return (-1);  /*Error: Invalid index*/
 
-    if ((n & bitwise_mask) != 0)
-        return (1);/* bit is 1*/
-    else
-        return (0);  /* bit is 0*/
+	if ((n & bitwise_mask) != 0)
+		return (1);/* bit is 1*/
+	else
+	return (0);  /* bit is 0*/
 }
