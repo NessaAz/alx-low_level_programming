@@ -1,6 +1,6 @@
 #include "main.h"
 
-/*
+/**
  * get_bit - gets the value of a bit at a given index in a number
  * @n: The number to extract the bit from
  * @index: index of the bit to retrieve (starting from 0)
@@ -16,6 +16,6 @@ int get_bit(unsigned long int n, unsigned int index)
 
 	if ((n & bitwise_mask) != 0)
 		return (1);/* bit is 1*/
-	else
+
 	return (0);  /* bit is 0*/
 }
