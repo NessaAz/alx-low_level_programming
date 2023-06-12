@@ -9,31 +9,30 @@
 
 int create_file(const char *filename, char *text_content)
 {
-    FILE *file;
-    int fputs_result;
+    int fd, result_write_call, text_length;
+
+    int text_length = 0;
 
     if (filename == NULL)
         return (-1);
 
-    /* Open the file for writing (truncating it if it exists) */
-    file = fopen(filename, "w");
-    if (file == NULL)
+	/* Calculate the length of the text_content */
+    while (text_content && text_content[text_length])
+        text_length++;
+
+	/* Create the file with rw------- permissions */
+    fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0600);
+    if (fd == -1)
         return (-1);
 
-    /* Write the content to the file if text_content is not NULL */
-    if (text_content != NULL)
+	/* Write the text_content to the file */
+    result_write_call = write(fd, text_content, text_length);
+    if (result_write_call == -1)
     {
-        fputs_result = fputs(text_content, file);
-        if (fputs_result == EOF)
-        {
-            fclose(file);
-            return (9-1);
-        }
+        close(fd);
+        return (-1);
     }
 
-    /* Close the file */
-    if (fclose(file) == EOF)
-        return (-1);
-
+    close(fd);
     return (1);
 }
