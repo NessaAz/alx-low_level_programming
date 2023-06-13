@@ -77,12 +77,22 @@ int main(int argc, char *argv[])
 	exit(0);
 }
 
+
+/**
+ * error_exit - prints an error message and exits with code 1
+ * @message: error message to print
+ */
 void error_exit(const char *message)
 {
 	perror(message);
 	exit(1);
 }
 
+
+/**
+ * close_fd_exit - closes a file descriptor and exits with code 100 if an error occurs.
+ * @fd: file descriptor to close.
+ */
 void close_fd_exit(int fd)
 {
 	if (close(fd) == -1)
