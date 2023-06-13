@@ -47,6 +47,7 @@ int main(int argc, char *argv[])
 
     print_elf_header_info(&elf_header);
 
+
     close(fd);
     exit(0);
 }
