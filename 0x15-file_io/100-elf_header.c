@@ -2,77 +2,22 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <sys/types.h>
-#include <sys/stat.h>
 #include <elf.h>
 
-/*
- * ELF Header Printer
- *
- * This program reads an ELF (Executable and Linkable Format) file and prints
- * information from its ELF header. It checks the validity of the ELF file and
- * displays details such as the ELF class, data encoding, version, OS/ABI,
- * ABI version, file type, and entry point address.
- *
- * Usage: elf_header_printer <file>
- *
- * Author: OpenAI
- * Created: June 9, 2023
- * Last Updated: June 9, 2023
- */
-
-#include <elf.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-
-/* Function Declarations */
-void check_elf(unsigned char *e_ident);
-void print_elf_header_info(const Elf64_Ehdr *header);
-void close_file(int fd);
-
-/* Check if the given file is a valid ELF file */
-void check_elf(unsigned char *e_ident)
-{
-    if (!(e_ident[0] == 0x7f && e_ident[1] == 'E' && e_ident[2] == 'L' && e_ident[3] == 'F'))
-    {
-        fprintf(stderr, "Error: Not an ELF file\n");
-        exit(98);
-    }
-
-    if (read(fd, &elf_header, sizeof(elf_header)) != sizeof(elf_header))
-    {
-        fprintf(stderr, "Error: Failed to read ELF header\n");
-        close(fd);
-        exit(98);
-    }
-
-    print_elf_header_info(&elf_header);
-
-
-    close(fd);
-    exit(0);
+void print_error(const char *message) {
+    fprintf(stderr, "Error: %s\n", message);
+    exit(98);
 }
 
-/* Print information from the ELF header */
-void print_elf_header_info(const Elf64_Ehdr *header)
-{
-    /*Print ELF magic number and identification information */
+void print_elf_header_info(Elf64_Ehdr *header) {
     printf("ELF Header:\n");
     printf("  Magic:   ");
-    for (int i = 0; i < EI_NIDENT; i++)
-    {
+    for (int i = 0; i < EI_NIDENT; i++) {
         printf("%02x ", header->e_ident[i]);
     }
     printf("\n");
-
-    /*Print ELF class, data encoding, version, OS/ABI, ABI version*/
     printf("  Class:                             ");
     switch (header->e_ident[EI_CLASS]) {
-        /*Handle different ELF classes*/
         case ELFCLASSNONE:
             printf("none\n");
             break;
@@ -85,11 +30,59 @@ void print_elf_header_info(const Elf64_Ehdr *header)
         default:
             printf("<unknown: %x>\n", header->e_ident[EI_CLASS]);
     }
-
-    /*Print file type and entry point address*/
+    printf("  Data:                              ");
+    switch (header->e_ident[EI_DATA]) {
+        case ELFDATANONE:
+            printf("none\n");
+            break;
+        case ELFDATA2LSB:
+            printf("2's complement, little endian\n");
+            break;
+        case ELFDATA2MSB:
+            printf("2's complement, big endian\n");
+            break;
+        default:
+            printf("<unknown: %x>\n", header->e_ident[EI_DATA]);
+    }
+    printf("  Version:                           %d (current)\n", header->e_ident[EI_VERSION]);
+    printf("  OS/ABI:                            ");
+    switch (header->e_ident[EI_OSABI]) {
+        case ELFOSABI_SYSV:
+            printf("UNIX - System V\n");
+            break;
+        case ELFOSABI_HPUX:
+            printf("UNIX - HP-UX\n");
+            break;
+        case ELFOSABI_NETBSD:
+            printf("UNIX - NetBSD\n");
+            break;
+        case ELFOSABI_LINUX:
+            printf("UNIX - Linux\n");
+            break;
+        case ELFOSABI_SOLARIS:
+            printf("UNIX - Solaris\n");
+            break;
+        case ELFOSABI_IRIX:
+            printf("UNIX - IRIX\n");
+            break;
+        case ELFOSABI_FREEBSD:
+            printf("UNIX - FreeBSD\n");
+            break;
+        case ELFOSABI_TRU64:
+            printf("UNIX - TRU64\n");
+            break;
+        case ELFOSABI_ARM:
+            printf("UNIX - ARM architecture\n");
+            break;
+        case ELFOSABI_STANDALONE:
+            printf("Stand-alone (embedded) application\n");
+            break;
+        default:
+            printf("<unknown: %x>\n", header->e_ident[EI_OSABI]);
+    }
+    printf("  ABI Version:                       %d\n", header->e_ident[EI_ABIVERSION]);
     printf("  Type:                              ");
     switch (header->e_type) {
-        /*Handle different ELF types*/
         case ET_NONE:
             printf("NONE (None)\n");
             break;
@@ -108,48 +101,28 @@ void print_elf_header_info(const Elf64_Ehdr *header)
         default:
             printf("<unknown: %x>\n", header->e_type);
     }
+    printf("  Entry point address:               0x%lx\n", header->e_entry);
 }
 
-/* Close the file associated with the given file descriptor */
-void close_file(int fd)
-{
-    if (close(fd) == -1) {
-        fprintf(stderr, "Error: Can't close fd %d\n", fd);
-        exit(98);
-    }
-}
-
-/* Main program execution */
-int main(int argc, char *argv[])
-{
-    /*Check command-line arguments*/
-    if (argc < 2) {
-        fprintf(stderr, "Usage: %s <file>\n", argv[0]);
-        exit(1);
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        print_error("Invalid number of arguments");
     }
 
-    /*Open the file*/
     int fd = open(argv[1], O_RDONLY);
     if (fd == -1) {
-        fprintf(stderr, "Error: Can't read file %s\n", argv[1]);
-        exit(98);
+        print_error("Can't read file");
     }
 
-    /*Read ELF header from the file*/
     Elf64_Ehdr header;
-    ssize_t num_bytes = read(fd, &header, sizeof(Elf64_Ehdr));
-    if (num_bytes == -1 || num_bytes < sizeof(Elf64_Ehdr)) {
-        close_file(fd);
-        fprintf(stderr, "Error: Failed to read ELF header from file\n");
-        exit(98);
+    if (read(fd, &header, sizeof(Elf64_Ehdr)) != sizeof(Elf64_Ehdr)) {
+        close(fd);
+        print_error("Failed to read ELF header from file");
     }
 
-    /* Process and print the ELF header information*/
-    check_elf(header.e_ident);
     print_elf_header_info(&header);
 
-    /* Close the file*/
-    close_file(fd);
+    close(fd);
 
-    return (0);
+    return 0;
 }
